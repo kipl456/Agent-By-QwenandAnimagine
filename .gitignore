@@ -1,0 +1,57 @@
+# ================= 依赖 / 构建产物 =================
+# Python 虚拟环境与缓存
+animagine-service/.venv/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Java 构建产物
+QwenAndAnimagine/target/
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# Node / Vue
+vue/node_modules/
+node_modules/
+vue/dist/
+dist/
+npm-debug.log*
+*.tsbuildinfo
+.eslintcache
+
+# ================= 运行产物 =================
+# 生成的图片
+QwenAndAnimagine/generated/
+generated/
+# 本地数据库文件
+*.db
+*.mv.db
+
+# ================= 模型权重（几百MB~几GB，绝不能上传）=================
+*.safetensors
+*.ckpt
+*.bin
+*.pth
+*.onnx
+models/
+
+# ================= 敏感信息 =================
+.env
+.env.*
+application-local.yml
+application-local.properties
+*.token
+HF_TOKEN
+
+# ================= IDE / 系统 =================
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.suo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: QwenAndAnimagine
+
+  # ---- Qwen / Ollama 连接配置 ----
+  ai:
+    model:
+      chat: ollama                 # 2.0 用这里控制开关(旧 chat.enabled 已移除)
+    ollama:
+      base-url: http://127.0.0.1:11434     # Ollama 地址(键不变)
+      chat:
+        # 改成你 ollama list 里的模型名。因为含冒号,这里用引号包起来更稳妥
+        model: "hf.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive:Q4_K_M"
+        num-ctx: 16384                      # 2.0 写法:chat.num-ctx(旧版是 chat.options.num-ctx)
+        temperature: 0.7                    # 越高越有创意,越低越听话
+
+  # ---- MySQL 数据源 ----
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/animegen?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8
+    username: root
+    password: "123456"
+  # ---- JPA:先让框架根据实体自动建表,学会后可换迁移工具 ----
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # ---- Redis 连接 ----
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
+server:
+  port: 8080
+
+# ---- 画图服务地址 ----
+animagine:
+  base-url: http://127.0.0.1:8000
+# ---- 图片保存目录 ----
+image:
+  storage-dir: ./generated
